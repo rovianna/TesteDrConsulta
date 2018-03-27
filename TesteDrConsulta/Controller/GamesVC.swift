@@ -29,10 +29,18 @@ class GamesVC: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailLoadSegue" {
+            let instanceDesc = segue.destination as! GameDetailVC
+            instanceDesc.game = sender as? Game
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.gamesTV.delegate = self
         self.gamesTV.dataSource = self
+        self.navigationController?.title = "Top Games"
     }
 }
 
@@ -44,12 +52,17 @@ extension GamesVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = Bundle.main.loadNibNamed("GamesTableCell", owner: self, options: nil)?.first as! GamesTableCell
         cell.configureCell(game: dataService.games[indexPath.row])
+        cell.positionLabel.text = "#\(indexPath.row + 1)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = Bundle.main.loadNibNamed("GamesTableCell", owner: self, options: nil)?.first as! GamesTableCell
         return cell.frame.height
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailLoadSegue", sender: dataService.games[indexPath.row])
     }
     
     

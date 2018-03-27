@@ -18,7 +18,7 @@ class GamesTableCell: UITableViewCell {
     func configureCell(game: Game) {
         titleLabel.text = game.name
         viewersLabel.text = "\(game.viewers)"
-        imageLabel.image = UIImage(named: "\(game.box.medium)")
+        imageLabel.downloadImage(from: game.box.small)
     }
     
 }
