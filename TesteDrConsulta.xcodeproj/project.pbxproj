@@ -18,6 +18,8 @@
 		4983FD28206A907700FD8A28 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4983FD27206A907700FD8A28 /* Box.swift */; };
 		4983FD2A206A907F00FD8A28 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4983FD29206A907F00FD8A28 /* Logo.swift */; };
 		4983FD2E206AB40800FD8A28 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 4983FD2D206AB40800FD8A28 /* data.json */; };
+		4983FD32206AE36000FD8A28 /* GamesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4983FD30206AE36000FD8A28 /* GamesTableCell.swift */; };
+		4983FD33206AE36000FD8A28 /* GamesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4983FD31206AE36000FD8A28 /* GamesTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4983FD27206A907700FD8A28 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4983FD29206A907F00FD8A28 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
 		4983FD2D206AB40800FD8A28 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		4983FD30206AE36000FD8A28 /* GamesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableCell.swift; sourceTree = "<group>"; };
+		4983FD31206AE36000FD8A28 /* GamesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesTableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		4983FD07206A8D8D00FD8A28 /* TesteDrConsulta */ = {
 			isa = PBXGroup;
 			children = (
+				4983FD2F206AE34000FD8A28 /* Cell */,
 				4983FD1E206A8DCA00FD8A28 /* Utils */,
 				4983FD1D206A8DC300FD8A28 /* View */,
 				4983FD1C206A8DBC00FD8A28 /* Controller */,
@@ -120,6 +125,15 @@
 				4983FD2D206AB40800FD8A28 /* data.json */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		4983FD2F206AE34000FD8A28 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4983FD30206AE36000FD8A28 /* GamesTableCell.swift */,
+				4983FD31206AE36000FD8A28 /* GamesTableCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4983FD13206A8D8D00FD8A28 /* LaunchScreen.storyboard in Resources */,
+				4983FD33206AE36000FD8A28 /* GamesTableCell.xib in Resources */,
 				4983FD10206A8D8D00FD8A28 /* Assets.xcassets in Resources */,
 				4983FD0E206A8D8D00FD8A28 /* Main.storyboard in Resources */,
 				4983FD2E206AB40800FD8A28 /* data.json in Resources */,
@@ -199,6 +214,7 @@
 				4983FD2A206A907F00FD8A28 /* Logo.swift in Sources */,
 				4983FD20206A8F5600FD8A28 /* Game.swift in Sources */,
 				4983FD22206A8F9100FD8A28 /* GamesVC.swift in Sources */,
+				4983FD32206AE36000FD8A28 /* GamesTableCell.swift in Sources */,
 				4983FD28206A907700FD8A28 /* Box.swift in Sources */,
 				4983FD09206A8D8D00FD8A28 /* AppDelegate.swift in Sources */,
 				4983FD24206A8FA300FD8A28 /* DataService.swift in Sources */,
