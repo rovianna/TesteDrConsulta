@@ -21,6 +21,18 @@ class GamesVC: UIViewController {
         super.viewDidAppear(animated)
     }
     
+    func loadNavigation(){
+        let btn1 = UIButton(type: .custom)
+        btn1.setImage(UIImage(named: "filter.png"), for: .normal)
+        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btn1.addTarget(self, action: #selector(newFilter(_:)), for: .touchUpInside)
+        let item1 = UIBarButtonItem(customView: btn1)
+        
+        self.navigationItem.rightBarButtonItem = item1
+        
+        self.navigationItem.title = "Top Games"
+    }
+    
     
     
     func loadTwitchTops(){
@@ -46,8 +58,8 @@ class GamesVC: UIViewController {
         super.viewDidLoad()
         self.gamesTV.delegate = self
         self.gamesTV.dataSource = self
-        self.navigationController?.title = "Top Games"
         self.loadTwitchTops()
+        self.loadNavigation()
         if #available(iOS 10.0, *){
             gamesTV.refreshControl = refreshControl
         } else {
@@ -56,6 +68,11 @@ class GamesVC: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshGameData(_:)), for: .valueChanged)
         refreshControl.tintColor = UIColor.white
         refreshControl.attributedTitle = NSAttributedString(string: "Carregando Jogos", attributes: myAttribute)
+    }
+    
+    @objc func newFilter(_ sender: UIButton) {
+        let myFilter = FilterVC(frame: CGRect(x: 10, y: 100, width: 320, height: 224))
+        self.view.addSubview(myFilter)
     }
     
     @objc func refreshGameData(_ sender: Any){

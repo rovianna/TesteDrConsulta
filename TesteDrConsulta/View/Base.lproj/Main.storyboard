@@ -17,6 +17,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BNy-jc-Qvc">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.38154667619999999" green="0.2490065098" blue="0.63251572850000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
@@ -63,7 +64,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2KE-Zl-Ags"/>
+                    <navigationItem key="navigationItem" id="2KE-Zl-Ags">
+                        <barButtonItem key="backBarButtonItem" title=" " id="uJg-id-9Cj"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="5yC-PL-ZCK" id="75K-DL-eKx"/>
                         <outlet property="gamesTV" destination="fSY-OT-BVS" id="VQp-dm-kNQ"/>
@@ -99,7 +102,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4W-O2-03G">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4W-O2-03G">
                                 <rect key="frame" x="16" y="508" width="288" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.38154667615890503" green="0.24900650978088379" blue="0.72641040439958926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

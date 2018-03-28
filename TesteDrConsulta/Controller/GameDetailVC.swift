@@ -28,7 +28,6 @@ class GameDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     
@@ -41,7 +40,6 @@ class GameDetailVC: UIViewController {
         guard let url = URL(string: "\(BASE_TWITCH_GAMES)/\(game_)") else {
             return
         }
-        print(url)
         
         if #available(iOS 10.0, *){
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -56,6 +54,9 @@ class GameDetailVC: UIViewController {
         self.thumbnailImage.downloadImage(from: game.box.large)
         self.spectatorLabel.text = "\(game.viewers)"
         self.channelLabel.text = "\(game.channels)"
+        self.navigationItem.title = "\(game.name)"
+        self.navigationItem.backBarButtonItem?.title = " "
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.black
     }
     
     
