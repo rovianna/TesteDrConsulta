@@ -19,6 +19,9 @@ class GamesVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if let index = self.gamesTV.indexPathForSelectedRow {
+            self.gamesTV.deselectRow(at: index, animated: true)
+        }
     }
     
     func loadNavigation(){
@@ -36,18 +39,11 @@ class GamesVC: UIViewController {
     
     
     func loadTwitchTops(){
-        dataService.getTwitchTopGames { (Success) in
+        dataService.getTwitchTopGames(limit: LIMIT_DEFAULT) { (Success) in
             if Success {
                 OperationQueue.main.addOperation {
                     self.gamesTV.reloadData()
                 }
-            } else {
-                
-            }
-        }
-        dataService.getTwitchStreamers(game: "Fortnite") { (Success) in
-            if Success {
-                
             } else {
                 
             }
@@ -78,12 +74,14 @@ class GamesVC: UIViewController {
     }
     
     @objc func newFilter(_ sender: UIButton) {
-        let myFilter = FilterVC(frame: CGRect(x: 10, y: 100, width: 320, height: 224))
+        let myFilter = FilterVC(frame: CGRect(x: 10, y: 100, width: 300, height: 276))
+        myFilter.distanceLabel.text = LIMIT_DEFAULT
+        myFilter.distanceSlider.value = Float(LIMIT_DEFAULT)!
         self.view.addSubview(myFilter)
     }
     
     @objc func refreshGameData(_ sender: Any){
-        dataService.getTwitchTopGames { (Success) in
+        dataService.getTwitchTopGames(limit: LIMIT_DEFAULT) { (Success) in
             if Success {
                 OperationQueue.main.addOperation {
                     self.gamesTV.reloadData()
@@ -106,9 +104,12 @@ extension GamesVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = Bundle.main.loadNibNamed("GamesTableCell", owner: self, options: nil)?.first as! GamesTableCell
-        cell.configureCell(game: dataService.games[indexPath.row])
-        cell.positionLabel.text = "#\(indexPath.row + 1)"
+        let cell = Bundle.main.loadNibNamed("GamesTableCell", owner: self, options: nil)?.first as! GamesTableCell
+        if ORDER_BY == "POPULARIDADE" {
+            cell.configureCell(game: dataService.games[indexPath.row])
+        } else {
+            cell.configureCell(game: dataService.games[indexPath.row])
+        }
         return cell
     }
     

@@ -11,8 +11,9 @@ import Foundation
 typealias callback = (_ success: Bool) -> ()
 let client_id = "38fpvmn9c12eceohdf0dcaf8x4huwj"
 let GET_TWITCHBASE_URL = "https://api.twitch.tv/kraken"
-let GET_TWITCHTOP_URL = "\(GET_TWITCHBASE_URL)/games/top?limit=\(LIMIT_DEFAULT)"
+let GET_TWITCHTOP_URL = "\(GET_TWITCHBASE_URL)/games/top?limit="
 let GET_TWITCHSTREAMS_URL = "\(GET_TWITCHBASE_URL)/streams/?game="
 let BASE_TWITCH_GAMES = "https://www.twitch.tv/directory/game"
-let LIMIT_DEFAULT = "25"
+var LIMIT_DEFAULT = "25"
+var ORDER_BY = "POPULARIDADE"
 

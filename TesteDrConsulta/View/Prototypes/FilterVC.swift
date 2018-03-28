@@ -12,8 +12,7 @@ class FilterVC: UIView {
 
     @IBOutlet var filterVC: UIView!
     @IBOutlet weak var distanceLabel: UILabel!
-    
-    
+    @IBOutlet weak var distanceSlider: UISlider!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +36,8 @@ class FilterVC: UIView {
     }
     
     @IBAction func saveFilteredOptions(_ sender: UIButton) {
-        print("OK")
+        LIMIT_DEFAULT = self.distanceLabel.text!
+        self.removeFromSuperview()
     }
     
     @IBAction func cancelFilter(_ sender: UIButton) {
@@ -47,9 +47,9 @@ class FilterVC: UIView {
     @IBAction func filterOptions(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-        print("Teste")
+        ORDER_BY = "POPULARIDADE"
         case 1:
-        print("Teste 2")
+        ORDER_BY = "NOME"
         default:
         break
         }

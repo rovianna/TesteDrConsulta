@@ -22,12 +22,14 @@ class Game {
     var locale: String = ""
     var viewers: Int = 0
     var channels: Int = 0
+    var position: Int = 0
     
     static func parseGameJSONData(data: Data) -> [Game] {
         var games_ = [Game]()
         do {
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             if let gamesDictionary = jsonResult as? Dictionary<String, AnyObject> {
+                var position = 1
                 let games = gamesDictionary["top"] as! [Dictionary<String,AnyObject>]
                 for game in games {
                     let game_ = Game()
@@ -48,7 +50,9 @@ class Game {
                     game_.logo.medium = logoImg["medium"] as! String
                     game_.logo.small = logoImg["small"] as! String
                     game_.giantbomb_id = topGames["giantbomb_id"] as! Int
+                    game_.position = position
                     games_.append(game_)
+                    position += 1
                 }
             }
         } catch let err {
@@ -56,5 +60,18 @@ class Game {
         }
         return games_
     }
+    
+    static func sortGameArrayData(game: [Game], order_by: String) -> [Game]{
+        var games_ = game
+        
+        if order_by == "POPULARIDADE"{
+            games_ = games_.sorted(by: {$0.viewers > $1.viewers})
+        } else {
+            games_ = games_.sorted(by: {$0.name < $1.name})
+        }
+        
+        return games_
+    }
+
     
 }
