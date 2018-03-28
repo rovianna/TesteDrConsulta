@@ -45,6 +45,13 @@ class GamesVC: UIViewController {
                 
             }
         }
+        dataService.getTwitchStreamers(game: "Fortnite") { (Success) in
+            if Success {
+                
+            } else {
+                
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
