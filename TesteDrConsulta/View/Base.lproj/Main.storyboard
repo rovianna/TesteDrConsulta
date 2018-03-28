@@ -156,7 +156,7 @@
                         <outlet property="spectatorLabel" destination="NcJ-ef-Hwy" id="YKk-2J-rNB"/>
                         <outlet property="thumbnailImage" destination="UWn-yc-M0U" id="ibN-LV-1wJ"/>
                         <outlet property="titleLabel" destination="5pf-jl-xfe" id="8VL-yH-2MX"/>
-                        <segue destination="qXp-6N-n7a" kind="show" id="KzR-2f-YBS"/>
+                        <segue destination="qXp-6N-n7a" kind="show" identifier="streamersSegue" id="KzR-2f-YBS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CkY-21-3Tv" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,4 +14,10 @@ class StreamTableCell: UITableViewCell {
     @IBOutlet weak var streamerLabel: UILabel!
     @IBOutlet weak var viewersLabel: UILabel!
     
+    func configureCell(stream: Streamer){
+        thumbImage.downloadImage(from: stream.box.small)
+        streamerLabel.text = stream.streamer
+        viewersLabel.text = "\(stream.viewers)"
+    }
+    
 }

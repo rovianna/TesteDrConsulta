@@ -30,9 +30,15 @@ class GameDetailVC: UIViewController {
         super.viewDidLoad()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "streamersSegue" {
+            let instanceDesc = segue.destination as! StreamsVC
+            instanceDesc.gameName = sender as? String
+        }
+    }
     
     @IBAction func openTwitch(_ sender: UIButton) {
-        self.configureOpen(game: game!)
+        self.performSegue(withIdentifier: "streamersSegue", sender: game!.name)
     }
     
     func configureOpen(game : Game){
