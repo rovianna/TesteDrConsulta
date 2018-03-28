@@ -11,12 +11,19 @@ import UIKit
 class GamesVC: UIViewController {
     
     var dataService = DataService.instance
+    private let refreshControl = UIRefreshControl()
+    let myAttribute = [NSAttributedStringKey.foregroundColor : UIColor.white]
     
     @IBOutlet weak var gamesTV: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    }
+    
+    
+    
+    func loadTwitchTops(){
         dataService.getTwitchTopGames { (Success) in
             if Success {
                 OperationQueue.main.addOperation {
@@ -26,7 +33,6 @@ class GamesVC: UIViewController {
                 
             }
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,7 +47,33 @@ class GamesVC: UIViewController {
         self.gamesTV.delegate = self
         self.gamesTV.dataSource = self
         self.navigationController?.title = "Top Games"
+        self.loadTwitchTops()
+        if #available(iOS 10.0, *){
+            gamesTV.refreshControl = refreshControl
+        } else {
+            gamesTV.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshGameData(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.white
+        refreshControl.attributedTitle = NSAttributedString(string: "Carregando Jogos", attributes: myAttribute)
     }
+    
+    @objc func refreshGameData(_ sender: Any){
+        dataService.getTwitchTopGames { (Success) in
+            if Success {
+                OperationQueue.main.addOperation {
+                    self.gamesTV.reloadData()
+                    self.refreshControl.endRefreshing()
+                    self.activityIndicatorView.stopAnimating()
+                }
+            } else {
+                
+            }
+        }
+    }
+    
+    
+    
 }
 
 extension GamesVC : UITableViewDelegate, UITableViewDataSource {

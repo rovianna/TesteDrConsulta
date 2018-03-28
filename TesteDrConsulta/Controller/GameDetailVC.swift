@@ -31,6 +31,26 @@ class GameDetailVC: UIViewController {
         
     }
     
+    
+    @IBAction func openTwitch(_ sender: UIButton) {
+        self.configureOpen(game: game!)
+    }
+    
+    func configureOpen(game : Game){
+        let game_ = game.name.replacingOccurrences(of: " ", with: "%20")
+        guard let url = URL(string: "\(BASE_TWITCH_GAMES)/\(game_)") else {
+            return
+        }
+        print(url)
+        
+        if #available(iOS 10.0, *){
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+        
+    }
+    
     func configureDetails(game: Game) {
         self.titleLabel.text = game.name
         self.thumbnailImage.downloadImage(from: game.box.large)
