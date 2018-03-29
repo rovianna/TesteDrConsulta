@@ -1,12 +1,15 @@
 PODS:
+  - RevealingSplashView (0.5.0)
   - SDStateTableView (0.0.2)
 
 DEPENDENCIES:
+  - RevealingSplashView
   - SDStateTableView
 
 SPEC CHECKSUMS:
+  RevealingSplashView: 0794eecad3a8983ac11a1fe474e9a9b51b926780
   SDStateTableView: 59b560e09fcb91dba6ce420744927343c7447ba2
 
-PODFILE CHECKSUM: 67cc11e795fe81c061f1b8ecbd393fcdfd2e4349
+PODFILE CHECKSUM: 4bd67fe58092f48915f88768326f56c34c104c09
 
 COCOAPODS: 1.4.0

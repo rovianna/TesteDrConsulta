@@ -15,6 +15,10 @@
 		491CCEA7206C0FDA00C7D42E /* StreamTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491CCEA5206C0FDA00C7D42E /* StreamTableCell.xib */; };
 		491CCEA9206C113100C7D42E /* Streamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CCEA8206C113100C7D42E /* Streamer.swift */; };
 		491CCEAB206C62B900C7D42E /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 491CCEAA206C62B900C7D42E /* error.png */; };
+		496BE7CD206D8DE300B0A760 /* drconsulta_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 496BE7CC206D8DE300B0A760 /* drconsulta_logo.png */; };
+		496BE7CF206D8E4B00B0A760 /* twitch_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 496BE7CE206D8E4B00B0A760 /* twitch_logo.png */; };
+		496BE7D1206D900F00B0A760 /* GamesOffVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BE7D0206D900F00B0A760 /* GamesOffVC.swift */; };
+		496BE7D3206D903A00B0A760 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BE7D2206D903A00B0A760 /* SplashVC.swift */; };
 		4983FD09206A8D8D00FD8A28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4983FD08206A8D8D00FD8A28 /* AppDelegate.swift */; };
 		4983FD0E206A8D8D00FD8A28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4983FD0C206A8D8D00FD8A28 /* Main.storyboard */; };
 		4983FD10206A8D8D00FD8A28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4983FD0F206A8D8D00FD8A28 /* Assets.xcassets */; };
@@ -45,6 +49,10 @@
 		491CCEA5206C0FDA00C7D42E /* StreamTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StreamTableCell.xib; sourceTree = "<group>"; };
 		491CCEA8206C113100C7D42E /* Streamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streamer.swift; sourceTree = "<group>"; };
 		491CCEAA206C62B900C7D42E /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		496BE7CC206D8DE300B0A760 /* drconsulta_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drconsulta_logo.png; sourceTree = "<group>"; };
+		496BE7CE206D8E4B00B0A760 /* twitch_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitch_logo.png; sourceTree = "<group>"; };
+		496BE7D0206D900F00B0A760 /* GamesOffVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesOffVC.swift; sourceTree = "<group>"; };
+		496BE7D2206D903A00B0A760 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		4983FD05206A8D8D00FD8A28 /* TesteDrConsulta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteDrConsulta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983FD08206A8D8D00FD8A28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4983FD0D206A8D8D00FD8A28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +149,8 @@
 				4983FD21206A8F9100FD8A28 /* GamesVC.swift */,
 				499202E6206AEFB900C59B9B /* GameDetailVC.swift */,
 				491CCEA2206C0F4C00C7D42E /* StreamsVC.swift */,
+				496BE7D0206D900F00B0A760 /* GamesOffVC.swift */,
+				496BE7D2206D903A00B0A760 /* SplashVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,6 +197,8 @@
 			children = (
 				491CCEAA206C62B900C7D42E /* error.png */,
 				491CCE9C206BD2DE00C7D42E /* filter.png */,
+				496BE7CC206D8DE300B0A760 /* drconsulta_logo.png */,
+				496BE7CE206D8E4B00B0A760 /* twitch_logo.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -282,6 +294,8 @@
 				4983FD13206A8D8D00FD8A28 /* LaunchScreen.storyboard in Resources */,
 				491CCEA7206C0FDA00C7D42E /* StreamTableCell.xib in Resources */,
 				4983FD33206AE36000FD8A28 /* GamesTableCell.xib in Resources */,
+				496BE7CF206D8E4B00B0A760 /* twitch_logo.png in Resources */,
+				496BE7CD206D8DE300B0A760 /* drconsulta_logo.png in Resources */,
 				491CCE9D206BD2DE00C7D42E /* filter.png in Resources */,
 				4983FD10206A8D8D00FD8A28 /* Assets.xcassets in Resources */,
 				4983FD0E206A8D8D00FD8A28 /* Main.storyboard in Resources */,
@@ -333,10 +347,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TesteDrConsulta/Pods-TesteDrConsulta-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDStateTableView/SDStateTableView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDStateTableView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +371,7 @@
 				4983FD2A206A907F00FD8A28 /* Logo.swift in Sources */,
 				499202EC206AF7A400C59B9B /* Reachability.swift in Sources */,
 				4983FD20206A8F5600FD8A28 /* Game.swift in Sources */,
+				496BE7D1206D900F00B0A760 /* GamesOffVC.swift in Sources */,
 				499202E7206AEFB900C59B9B /* GameDetailVC.swift in Sources */,
 				4983FD22206A8F9100FD8A28 /* GamesVC.swift in Sources */,
 				491CCE9F206BD4E300C7D42E /* FilterVC.swift in Sources */,
@@ -367,6 +384,7 @@
 				491CCEA3206C0F4C00C7D42E /* StreamsVC.swift in Sources */,
 				499202EA206AF65000C59B9B /* Beautify.swift in Sources */,
 				4983FD24206A8FA300FD8A28 /* DataService.swift in Sources */,
+				496BE7D3206D903A00B0A760 /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

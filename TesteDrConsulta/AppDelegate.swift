@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             myGames.append(["id": game.id, "name": game.name, "viewers": game.viewers, "position": game.position, "channels": game.channels, "popularity": game.popularity, "small_logo": game.logo.small, "small_box": game.box.small, "large_logo": game.logo.large])
         }
         defaults.set(myGames, forKey: "myGames")
-        let myNewGames = defaults.array(forKey: "myGames") as? [[String: Any]]
+
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

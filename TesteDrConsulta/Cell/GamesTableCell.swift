@@ -22,4 +22,14 @@ class GamesTableCell: UITableViewCell {
         imageLabel.downloadImage(from: game.box.small)
     }
     
+    func configureOffCell(game: [String:Any]){
+        let name = game["name"] as! String
+        let viewers = game["viewers"] as! Int
+        let position = game["position"] as! Int
+        imageView?.isHidden = true
+        titleLabel.text = name
+        positionLabel.text = "#\(position)"
+        viewersLabel.text = "\(viewers)"
+    }
+    
 }

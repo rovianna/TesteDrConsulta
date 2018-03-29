@@ -6,5 +6,6 @@ target 'TesteDrConsulta' do
   use_frameworks!
 
   # Pods for TesteDrConsulta
+  pod 'RevealingSplashView'
   pod 'SDStateTableView'
 end
