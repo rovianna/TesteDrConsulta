@@ -1,0 +1,12 @@
+PODS:
+  - SDStateTableView (0.0.2)
+
+DEPENDENCIES:
+  - SDStateTableView
+
+SPEC CHECKSUMS:
+  SDStateTableView: 59b560e09fcb91dba6ce420744927343c7447ba2
+
+PODFILE CHECKSUM: 67cc11e795fe81c061f1b8ecbd393fcdfd2e4349
+
+COCOAPODS: 1.4.0

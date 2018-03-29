@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDStateTableView
 
 class GamesVC: UIViewController {
     
@@ -14,7 +15,7 @@ class GamesVC: UIViewController {
     private let refreshControl = UIRefreshControl()
     let myAttribute = [NSAttributedStringKey.foregroundColor : UIColor.white]
     
-    @IBOutlet weak var gamesTV: UITableView!
+    @IBOutlet weak var gamesTV: SDStateTableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidAppear(_ animated: Bool) {
@@ -22,6 +23,8 @@ class GamesVC: UIViewController {
         if let index = self.gamesTV.indexPathForSelectedRow {
             self.gamesTV.deselectRow(at: index, animated: true)
         }
+        self.loadTwitchTops()
+        self.loadNavigation()
     }
     
     func loadNavigation(){
@@ -39,13 +42,32 @@ class GamesVC: UIViewController {
     
     
     func loadTwitchTops(){
+        self.gamesTV.setState(.loading(message: "Carregando Jogos"))
         dataService.getTwitchTopGames(limit: LIMIT_DEFAULT) { (Success) in
             if Success {
                 OperationQueue.main.addOperation {
+                    if self.dataService.games.count > 0 {
+                    self.gamesTV.setState(.dataAvailable)
                     self.gamesTV.reloadData()
+                    self.refreshControl.endRefreshing()
+                    self.activityIndicatorView.stopAnimating()
+                    } else {
+                        self.gamesTV.setState(.withButton(errorImage: "error.png", title: "Vazio!", message: "Não foi encontrado nenhum jogo", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
+                            self.refreshControl.endRefreshing()
+                            self.activityIndicatorView.stopAnimating()
+                        }, retryAction: {
+                            self.loadTwitchTops()
+                        }))
+                    }
                 }
             } else {
-                
+                OperationQueue.main.addOperation {
+                    self.gamesTV.setState(.withButton(errorImage: "error.png", title: "Oh não!", message: "Houve um erro inesperado. Tente novamente mais tarde.", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
+                        
+                    }, retryAction: {
+                        self.loadTwitchTops()
+                    }))
+                }
             }
         }
     }
@@ -61,8 +83,13 @@ class GamesVC: UIViewController {
         super.viewDidLoad()
         self.gamesTV.delegate = self
         self.gamesTV.dataSource = self
-        self.loadTwitchTops()
-        self.loadNavigation()
+        if dataService.games.count == 0 {
+            self.gamesTV.setState(.withButton(errorImage: "error.png", title: "Vazio!", message: "Não foi encontrado nenhum jogo", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
+                
+            }, retryAction: {
+                self.loadTwitchTops()
+            }))
+        }
         if #available(iOS 10.0, *){
             gamesTV.refreshControl = refreshControl
         } else {
@@ -81,25 +108,17 @@ class GamesVC: UIViewController {
     }
     
     @objc func refreshGameData(_ sender: Any){
-        dataService.getTwitchTopGames(limit: LIMIT_DEFAULT) { (Success) in
-            if Success {
-                OperationQueue.main.addOperation {
-                    self.gamesTV.reloadData()
-                    self.refreshControl.endRefreshing()
-                    self.activityIndicatorView.stopAnimating()
-                }
-            } else {
-                
-            }
-        }
+       loadTwitchTops()
     }
-    
-    
-    
 }
 
 extension GamesVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if dataService.games.count > 0 {
+            self.gamesTV.separatorStyle = .singleLine
+        } else {
+            self.gamesTV.separatorStyle = .none
+        }
         return dataService.games.count
     }
     

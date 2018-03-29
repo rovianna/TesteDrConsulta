@@ -14,6 +14,7 @@
 		491CCEA6206C0FDA00C7D42E /* StreamTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CCEA4206C0FDA00C7D42E /* StreamTableCell.swift */; };
 		491CCEA7206C0FDA00C7D42E /* StreamTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491CCEA5206C0FDA00C7D42E /* StreamTableCell.xib */; };
 		491CCEA9206C113100C7D42E /* Streamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491CCEA8206C113100C7D42E /* Streamer.swift */; };
+		491CCEAB206C62B900C7D42E /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 491CCEAA206C62B900C7D42E /* error.png */; };
 		4983FD09206A8D8D00FD8A28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4983FD08206A8D8D00FD8A28 /* AppDelegate.swift */; };
 		4983FD0E206A8D8D00FD8A28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4983FD0C206A8D8D00FD8A28 /* Main.storyboard */; };
 		4983FD10206A8D8D00FD8A28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4983FD0F206A8D8D00FD8A28 /* Assets.xcassets */; };
@@ -30,9 +31,12 @@
 		499202E7206AEFB900C59B9B /* GameDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499202E6206AEFB900C59B9B /* GameDetailVC.swift */; };
 		499202EA206AF65000C59B9B /* Beautify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499202E9206AF65000C59B9B /* Beautify.swift */; };
 		499202EC206AF7A400C59B9B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499202EB206AF7A400C59B9B /* Reachability.swift */; };
+		4D21E78A7F4F6E3836539BBC /* Pods_TesteDrConsulta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1016286CCC85BBCB06E53B2D /* Pods_TesteDrConsulta.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1016286CCC85BBCB06E53B2D /* Pods_TesteDrConsulta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TesteDrConsulta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1070B699F93F63D7FC694088 /* Pods-TesteDrConsulta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteDrConsulta.release.xcconfig"; path = "Pods/Target Support Files/Pods-TesteDrConsulta/Pods-TesteDrConsulta.release.xcconfig"; sourceTree = "<group>"; };
 		491CCE9C206BD2DE00C7D42E /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		491CCE9E206BD4E300C7D42E /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		491CCEA0206BD4FA00C7D42E /* Filter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Filter.xib; sourceTree = "<group>"; };
@@ -40,6 +44,7 @@
 		491CCEA4206C0FDA00C7D42E /* StreamTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamTableCell.swift; sourceTree = "<group>"; };
 		491CCEA5206C0FDA00C7D42E /* StreamTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StreamTableCell.xib; sourceTree = "<group>"; };
 		491CCEA8206C113100C7D42E /* Streamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Streamer.swift; sourceTree = "<group>"; };
+		491CCEAA206C62B900C7D42E /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		4983FD05206A8D8D00FD8A28 /* TesteDrConsulta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TesteDrConsulta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4983FD08206A8D8D00FD8A28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4983FD0D206A8D8D00FD8A28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 		499202E6206AEFB900C59B9B /* GameDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailVC.swift; sourceTree = "<group>"; };
 		499202E9206AF65000C59B9B /* Beautify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beautify.swift; sourceTree = "<group>"; };
 		499202EB206AF7A400C59B9B /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		4F8B1015F266796C4B59B3C5 /* Pods-TesteDrConsulta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TesteDrConsulta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TesteDrConsulta/Pods-TesteDrConsulta.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D21E78A7F4F6E3836539BBC /* Pods_TesteDrConsulta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +83,8 @@
 			children = (
 				4983FD07206A8D8D00FD8A28 /* TesteDrConsulta */,
 				4983FD06206A8D8D00FD8A28 /* Products */,
+				BE4B9D7A6F016EA438477025 /* Pods */,
+				68C722AE620EED5EFE9B73F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +185,7 @@
 		499202ED206BCDBB00C59B9B /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				491CCEAA206C62B900C7D42E /* error.png */,
 				491CCE9C206BD2DE00C7D42E /* filter.png */,
 			);
 			path = Image;
@@ -190,6 +200,23 @@
 			path = Prototypes;
 			sourceTree = "<group>";
 		};
+		68C722AE620EED5EFE9B73F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1016286CCC85BBCB06E53B2D /* Pods_TesteDrConsulta.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE4B9D7A6F016EA438477025 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B1015F266796C4B59B3C5 /* Pods-TesteDrConsulta.debug.xcconfig */,
+				1070B699F93F63D7FC694088 /* Pods-TesteDrConsulta.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,9 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4983FD17206A8D8D00FD8A28 /* Build configuration list for PBXNativeTarget "TesteDrConsulta" */;
 			buildPhases = (
+				12F94853B778CBD4A9B0C24E /* [CP] Check Pods Manifest.lock */,
 				4983FD01206A8D8D00FD8A28 /* Sources */,
 				4983FD02206A8D8D00FD8A28 /* Frameworks */,
 				4983FD03206A8D8D00FD8A28 /* Resources */,
+				B7BBAA5329489AE08D1B065D /* [CP] Embed Pods Frameworks */,
+				20E9D897F35CFC0E4475EE12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,11 +285,66 @@
 				491CCE9D206BD2DE00C7D42E /* filter.png in Resources */,
 				4983FD10206A8D8D00FD8A28 /* Assets.xcassets in Resources */,
 				4983FD0E206A8D8D00FD8A28 /* Main.storyboard in Resources */,
+				491CCEAB206C62B900C7D42E /* error.png in Resources */,
 				491CCEA1206BD4FA00C7D42E /* Filter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12F94853B778CBD4A9B0C24E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TesteDrConsulta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		20E9D897F35CFC0E4475EE12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TesteDrConsulta/Pods-TesteDrConsulta-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7BBAA5329489AE08D1B065D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TesteDrConsulta/Pods-TesteDrConsulta-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDStateTableView/SDStateTableView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDStateTableView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TesteDrConsulta/Pods-TesteDrConsulta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4983FD01206A8D8D00FD8A28 /* Sources */ = {
@@ -416,6 +501,7 @@
 		};
 		4983FD18206A8D8D00FD8A28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F8B1015F266796C4B59B3C5 /* Pods-TesteDrConsulta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -431,6 +517,7 @@
 		};
 		4983FD19206A8D8D00FD8A28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1070B699F93F63D7FC694088 /* Pods-TesteDrConsulta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
