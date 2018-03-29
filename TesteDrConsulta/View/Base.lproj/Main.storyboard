@@ -70,7 +70,7 @@
             </objects>
             <point key="canvasLocation" x="-891" y="815"/>
         </scene>
-        <!--Games OffVC-->
+        <!--Jogos Salvos-->
         <scene sceneID="EtZ-v9-sPc">
             <objects>
                 <viewController id="qrh-EY-pNL" customClass="GamesOffVC" customModule="TesteDrConsulta" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,7 +99,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="C0U-1f-wei"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jK1-Cm-Eig"/>
+                    <navigationItem key="navigationItem" title="Jogos Salvos" id="jK1-Cm-Eig"/>
                     <connections>
                         <outlet property="gamesVC" destination="an0-NP-QhC" id="0b6-6v-l4j"/>
                     </connections>

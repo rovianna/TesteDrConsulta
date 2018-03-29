@@ -9,25 +9,34 @@
 import UIKit
 import SDStateTableView
 
+/*
+ Classe para a lista offline.
+ Será gerada a ultima lista salva em UserDefaults.
+ Caso não tenha, será mostrado a informação na tela.
+ */
+
 class GamesOffVC: UIViewController {
 
+    //MARK: Outlets
     @IBOutlet weak var gamesVC: SDStateTableView!
     
+    //MARK: Properties
     let defaults = UserDefaults.standard
     var myOffGames: [[String:Any]] = []
     
+    //MARK: View Loads
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let myNewGames = defaults.array(forKey: "myGames") as? [[String: Any]]
-        guard let myGames = myNewGames else {
-            return
-        }
-        myOffGames = myGames
-        self.gamesVC.reloadData()
-        if !(myOffGames.isEmpty) {
-            self.gamesVC.setState(.dataAvailable)
-        } else {
-            self.gamesVC.setState(.withImage(image: "error.png", title: "Vazio!", message: "Você ainda não tem nenhuma lista atualizada!"))
+        getGames { (Success) in
+            if Success {
+                OperationQueue.main.addOperation {
+                    self.gamesVC.setState(.dataAvailable)
+                }
+            } else {
+                OperationQueue.main.addOperation {
+                    self.gamesVC.setState(.withImage(image: "error.png", title: "Vazio!", message: "Você ainda não tem uma lista!"))
+                }
+            }
         }
     }
     
@@ -37,13 +46,27 @@ class GamesOffVC: UIViewController {
         self.gamesVC.dataSource = self
     }
     
+    //MARK: Own Methods
     func getGames(completion: @escaping callback){
         self.gamesVC.setState(.loading(message: "Carregando Jogos"))
-        
+        let myNewGames = defaults.array(forKey: "myGames") as? [[String:Any]]
+        guard let myGames = myNewGames else {
+            completion(false)
+            return
+        }
+        myOffGames = myGames
+        if !(myOffGames.isEmpty){
+            self.gamesVC.reloadData()
+            completion(true)
+        } else {
+            self.gamesVC.reloadData()
+            completion(false)
+        }
     }
     
 }
 
+//MARK: Extension Table View
 extension GamesOffVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if myOffGames.count == 0 {

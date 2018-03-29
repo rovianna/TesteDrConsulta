@@ -9,11 +9,13 @@
 import UIKit
 
 class StreamTableCell: UITableViewCell {
-
+    
+    //MARK: Outlets
     @IBOutlet weak var thumbImage: UIImageView!
     @IBOutlet weak var streamerLabel: UILabel!
     @IBOutlet weak var viewersLabel: UILabel!
     
+    //MARK: Configuration
     func configureCell(stream: Streamer){
         thumbImage.downloadImage(from: stream.box.small)
         streamerLabel.text = stream.streamer

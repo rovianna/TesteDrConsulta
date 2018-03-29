@@ -8,15 +8,22 @@
 
 import UIKit
 
+/*
+    Tela de detalhe.
+    Ao clicar no botão,
+    gera a lista de Streamers por ordem de visualização.
+ */
 class GameDetailVC: UIViewController {
-
+    //MARK: Variables
     var game : Game?
     
+    //MARK: Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var spectatorLabel: UILabel!
     @IBOutlet weak var channelLabel: UILabel!
     
+    //MARK: View Loads
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let game = game else {
@@ -30,6 +37,7 @@ class GameDetailVC: UIViewController {
         super.viewDidLoad()
     }
     
+    //MARK: Prepare Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "streamersSegue" {
             let instanceDesc = segue.destination as! StreamsVC
@@ -37,10 +45,12 @@ class GameDetailVC: UIViewController {
         }
     }
     
+    //MARK: Streamer Segue
     @IBAction func openTwitch(_ sender: UIButton) {
         self.performSegue(withIdentifier: "streamersSegue", sender: game!.name)
     }
     
+    //MARK: Own Methods
     func configureOpen(game : Game){
         let game_ = game.name.replacingOccurrences(of: " ", with: "%20")
         guard let url = URL(string: "\(BASE_TWITCH_GAMES)/\(game_)") else {
@@ -52,7 +62,6 @@ class GameDetailVC: UIViewController {
         } else {
             UIApplication.shared.openURL(url)
         }
-        
     }
     
     func configureDetails(game: Game) {

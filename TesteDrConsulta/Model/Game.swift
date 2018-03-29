@@ -24,6 +24,7 @@ class Game {
     var channels: Int = 0
     var position: Int = 0
     
+    //MARK: Game Parser
     static func parseGameJSONData(data: Data) -> [Game] {
         var games_ = [Game]()
         do {
@@ -61,6 +62,7 @@ class Game {
         return games_
     }
     
+    //MARK: Sort Array
     static func sortGameArrayData(game: [Game], order_by: String) -> [Game]{
         var games_ = game
         

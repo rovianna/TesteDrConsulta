@@ -9,16 +9,26 @@
 import UIKit
 import SDStateTableView
 
+/* Classe Principal
+    API com os jogos mais visualizados no momento.
+    Filtro para quantidade de jogos, mínimo de 10 (com base na documentação),
+    máximo de 100 jogos, limitado pela documentação.
+    Ao escolher um dos jogos, seguirá para uma descrição.
+ */
+
 class GamesVC: UIViewController {
     
+    //MARK: Variables
     var dataService = DataService.instance
     private let refreshControl = UIRefreshControl()
     let myAttribute = [NSAttributedStringKey.foregroundColor : UIColor.white]
     let myFilter = FilterVC(frame: CGRect(x: 10, y: 100, width: 300, height: 310))
     
+    //MARK: Outlets
     @IBOutlet weak var gamesTV: SDStateTableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    //MARK: View Loads
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let index = self.gamesTV.indexPathForSelectedRow {
@@ -26,12 +36,32 @@ class GamesVC: UIViewController {
         }
         self.loadTwitchTops()
         self.loadNavigation()
+        saveUserDefaults()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.gamesTV.delegate = self
+        self.gamesTV.dataSource = self
+        if dataService.games.count == 0 {
+            self.gamesTV.setState(.withButton(errorImage: "error.png", title: "Vazio!", message: "Não foi encontrado nenhum jogo", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
+                
+            }, retryAction: {
+                self.loadTwitchTops()
+            }))
+        }
+        if #available(iOS 10.0, *){
+            gamesTV.refreshControl = refreshControl
+        } else {
+            gamesTV.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshGameData(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.white
+        refreshControl.attributedTitle = NSAttributedString(string: "Carregando Jogos", attributes: myAttribute)
     }
+
     
+    //MARK: Load Custom Navigation Options
     func loadNavigation(){
         let btn1 = UIButton(type: .custom)
         btn1.setImage(UIImage(named: "filter.png"), for: .normal)
@@ -44,6 +74,7 @@ class GamesVC: UIViewController {
         self.navigationItem.title = "Top Games"
     }
     
+    //MARK: Own Methods
     func loadTwitchTops(){
         self.gamesTV.setState(.loading(message: "Carregando Jogos"))
         dataService.getTwitchTopGames(limit: LIMIT_DEFAULT) { (Success) in
@@ -75,6 +106,7 @@ class GamesVC: UIViewController {
         }
     }
     
+    //MARK: Segue Prep
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailLoadSegue" {
             let instanceDesc = segue.destination as! GameDetailVC
@@ -82,27 +114,7 @@ class GamesVC: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.gamesTV.delegate = self
-        self.gamesTV.dataSource = self
-        if dataService.games.count == 0 {
-            self.gamesTV.setState(.withButton(errorImage: "error.png", title: "Vazio!", message: "Não foi encontrado nenhum jogo", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
-                
-            }, retryAction: {
-                self.loadTwitchTops()
-            }))
-        }
-        if #available(iOS 10.0, *){
-            gamesTV.refreshControl = refreshControl
-        } else {
-            gamesTV.addSubview(refreshControl)
-        }
-        refreshControl.addTarget(self, action: #selector(refreshGameData(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.white
-        refreshControl.attributedTitle = NSAttributedString(string: "Carregando Jogos", attributes: myAttribute)
-    }
-    
+    //MARK: Filter View Options
     @objc func newFilter(_ sender: UIButton) {
         myFilter.addShadow()
         myFilter.distanceLabel.text = LIMIT_DEFAULT
@@ -110,9 +122,12 @@ class GamesVC: UIViewController {
         myFilter.saveButton.addTarget(self, action: #selector(updateFilter(_:)), for: .touchUpInside)
         myFilter.sharedTextButton.addTarget(self, action: #selector(shareTextAction(_:)), for: .touchUpInside)
         myFilter.sharedJsonButton.addTarget(self, action: #selector(shareJSONAction(_:)), for: .touchUpInside)
-        self.view.addSubview(myFilter)
+            self.view.addSubview(self.myFilter)
+        SELECTABLE = false
     }
     
+    //MARK: Share Methods
+    //MARK: - Share Text
     @objc func shareTextAction(_ sender: UIButton){
         let shareText = dataService.games
         let activityViewController = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
@@ -120,22 +135,26 @@ class GamesVC: UIViewController {
         self.present(activityViewController, animated: true, completion: nil)
     }
     
+    //MARK: - Share JSON
     @objc func shareJSONAction(_ sender: UIButton){
         print("OK Share JSON")
     }
     
-    
+    //MARK: - Update Filter
     @objc func updateFilter(_ sender: UIButton){
         LIMIT_DEFAULT = "\(Int(myFilter.distanceSlider.value))"
         myFilter.removeFromSuperview()
         self.loadTwitchTops()
+        SELECTABLE = true
     }
     
+    //MARK: - Pull to Refresh
     @objc func refreshGameData(_ sender: Any){
        loadTwitchTops()
     }
 }
 
+//MARK: Table View Extension
 extension GamesVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataService.games.count > 0 {
@@ -162,7 +181,9 @@ extension GamesVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if SELECTABLE {
         performSegue(withIdentifier: "detailLoadSegue", sender: dataService.games[indexPath.row])
+        }
     }
     
     

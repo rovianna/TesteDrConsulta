@@ -9,17 +9,22 @@
 import UIKit
 import SDStateTableView
 
+/* Classe listando os Streamers com mais visualização no jogo selecionado */
+
 class StreamsVC: UIViewController {
 
+    //MARK: Outlets
     @IBOutlet weak var streamTV: SDStateTableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    //MARK: Variables
     var gameName: String?
     var dataService = DataService.instance
     
     private let refreshControl = UIRefreshControl()
     let myAttribute = [NSAttributedStringKey.foregroundColor : UIColor.white]
     
+    //MARK: View Load
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -46,6 +51,7 @@ class StreamsVC: UIViewController {
         
     }
     
+    //MARK: Own Methods
     func loadStreamers() {
         self.streamTV.setState(.loading(message: "Carregando Streamers"))
         guard var game = gameName else {
@@ -80,13 +86,13 @@ class StreamsVC: UIViewController {
         }
     }
     
-    
+    //MARK: Pull To Refresh
     @objc func refreshStreamerData(_ sender: Any){
         loadStreamers()
     }
 }
 
-
+//MARK: Extension Table View
 extension StreamsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataService.streamers.count == 0 {
@@ -108,5 +114,8 @@ extension StreamsVC : UITableViewDelegate, UITableViewDataSource {
         return cell.frame.height
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     
 }

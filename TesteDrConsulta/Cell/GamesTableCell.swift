@@ -9,12 +9,14 @@
 import UIKit
 
 class GamesTableCell: UITableViewCell {
-
+    
+    //MARK: Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var imageLabel: UIImageView!
     @IBOutlet weak var viewersLabel: UILabel!
     
+    //MARK: Configuration
     func configureCell(game: Game) {
         titleLabel.text = game.name
         viewersLabel.text = "\(game.viewers)"

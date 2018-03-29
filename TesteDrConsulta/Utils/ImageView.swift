@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MARK: Extension Download from String URL
 extension UIImageView {
     func downloadImage(from url: String) {
         let urlRequest = URLRequest(url: URL(string: url)!)

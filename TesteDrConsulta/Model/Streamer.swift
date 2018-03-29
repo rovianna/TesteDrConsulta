@@ -17,6 +17,7 @@ class Streamer {
     var link: String = ""
     var logo: String = ""
     
+    //MARK: Streamer Parse 
     static func parseStreamerJSONData(data: Data) -> [Streamer] {
         var streamer_ = [Streamer]()
         do {

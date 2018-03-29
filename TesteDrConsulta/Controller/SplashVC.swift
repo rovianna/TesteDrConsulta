@@ -9,6 +9,13 @@
 import UIKit
 import RevealingSplashView
 
+/*
+ Classe criada com a intenção de checar
+ se o usuário possui conexão com a Internet.
+ Caso possua, será redirecionado para a lista mais atual.
+ Caso não possua, será redirecionado para a última lista consultada.
+ */
+
 class SplashVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {

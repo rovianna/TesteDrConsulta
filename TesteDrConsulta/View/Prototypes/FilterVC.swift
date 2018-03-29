@@ -9,7 +9,8 @@
 import UIKit
 
 class FilterVC: UIView {
-
+    
+    //MARK: Outlets
     @IBOutlet var filterVC: UIView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var distanceSlider: UISlider!
@@ -19,6 +20,7 @@ class FilterVC: UIView {
     @IBOutlet weak var sharedJsonButton: UIButton!
     @IBOutlet weak var orderSegmented: UISegmentedControl!
     
+    //MARK: Inits
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -29,6 +31,7 @@ class FilterVC: UIView {
         commonInit()
     }
     
+    //MARK: Custom Init
     private func commonInit(){
         Bundle.main.loadNibNamed("Filter", owner: self, options: nil)
         addSubview(filterVC)
@@ -41,22 +44,24 @@ class FilterVC: UIView {
         }
     }
     
+    //MARK: Actions
     @IBAction func distanceFilter(_ sender: UISlider) {
         self.distanceLabel.text = "\(Int(sender.value))"
     }
     
     @IBAction func cancelFilter(_ sender: UIButton) {
-       self.removeFromSuperview()
+        self.removeFromSuperview()
+        SELECTABLE = true
     }
     
     @IBAction func filterOptions(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-        ORDER_BY = "POPULARIDADE"
+            ORDER_BY = "POPULARIDADE"
         case 1:
-        ORDER_BY = "NOME"
+            ORDER_BY = "NOME"
         default:
-        break
+            break
         }
     }
     
