@@ -28,6 +28,10 @@ class GamesVC: UIViewController {
         self.loadNavigation()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
     func loadNavigation(){
         let btn1 = UIButton(type: .custom)
         btn1.setImage(UIImage(named: "filter.png"), for: .normal)
@@ -110,7 +114,10 @@ class GamesVC: UIViewController {
     }
     
     @objc func shareTextAction(_ sender: UIButton){
-        print("OK Share Text")
+        let shareText = dataService.games
+        let activityViewController = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     @objc func shareJSONAction(_ sender: UIButton){
