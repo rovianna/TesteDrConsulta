@@ -14,6 +14,7 @@ class GamesVC: UIViewController {
     var dataService = DataService.instance
     private let refreshControl = UIRefreshControl()
     let myAttribute = [NSAttributedStringKey.foregroundColor : UIColor.white]
+    let myFilter = FilterVC(frame: CGRect(x: 10, y: 100, width: 300, height: 310))
     
     @IBOutlet weak var gamesTV: SDStateTableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -38,8 +39,6 @@ class GamesVC: UIViewController {
         
         self.navigationItem.title = "Top Games"
     }
-    
-    
     
     func loadTwitchTops(){
         self.gamesTV.setState(.loading(message: "Carregando Jogos"))
@@ -101,10 +100,28 @@ class GamesVC: UIViewController {
     }
     
     @objc func newFilter(_ sender: UIButton) {
-        let myFilter = FilterVC(frame: CGRect(x: 10, y: 100, width: 300, height: 276))
+        myFilter.addShadow()
         myFilter.distanceLabel.text = LIMIT_DEFAULT
         myFilter.distanceSlider.value = Float(LIMIT_DEFAULT)!
+        myFilter.saveButton.addTarget(self, action: #selector(updateFilter(_:)), for: .touchUpInside)
+        myFilter.sharedTextButton.addTarget(self, action: #selector(shareTextAction(_:)), for: .touchUpInside)
+        myFilter.sharedJsonButton.addTarget(self, action: #selector(shareJSONAction(_:)), for: .touchUpInside)
         self.view.addSubview(myFilter)
+    }
+    
+    @objc func shareTextAction(_ sender: UIButton){
+        print("OK Share Text")
+    }
+    
+    @objc func shareJSONAction(_ sender: UIButton){
+        print("OK Share JSON")
+    }
+    
+    
+    @objc func updateFilter(_ sender: UIButton){
+        LIMIT_DEFAULT = "\(Int(myFilter.distanceSlider.value))"
+        myFilter.removeFromSuperview()
+        self.loadTwitchTops()
     }
     
     @objc func refreshGameData(_ sender: Any){

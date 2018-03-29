@@ -13,6 +13,11 @@ class FilterVC: UIView {
     @IBOutlet var filterVC: UIView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var distanceSlider: UISlider!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var sharedTextButton: UIButton!
+    @IBOutlet weak var sharedJsonButton: UIButton!
+    @IBOutlet weak var orderSegmented: UISegmentedControl!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,15 +34,15 @@ class FilterVC: UIView {
         addSubview(filterVC)
         filterVC.frame = self.bounds
         filterVC.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        if ORDER_BY == "POPULARIDADE" {
+            orderSegmented.selectedSegmentIndex = 0
+        } else {
+            orderSegmented.selectedSegmentIndex = 1
+        }
     }
     
     @IBAction func distanceFilter(_ sender: UISlider) {
         self.distanceLabel.text = "\(Int(sender.value))"
-    }
-    
-    @IBAction func saveFilteredOptions(_ sender: UIButton) {
-        LIMIT_DEFAULT = self.distanceLabel.text!
-        self.removeFromSuperview()
     }
     
     @IBAction func cancelFilter(_ sender: UIButton) {
