@@ -10,10 +10,10 @@ import UIKit
 import SDStateTableView
 
 /* Classe Principal
-    API com os jogos mais visualizados no momento.
-    Filtro para quantidade de jogos, mínimo de 10 (com base na documentação),
-    máximo de 100 jogos, limitado pela documentação.
-    Ao escolher um dos jogos, seguirá para uma descrição.
+ API com os jogos mais visualizados no momento.
+ Filtro para quantidade de jogos, mínimo de 10 (com base na documentação),
+ máximo de 100 jogos, limitado pela documentação.
+ Ao escolher um dos jogos, seguirá para uma descrição.
  */
 
 class GamesVC: UIViewController {
@@ -59,7 +59,7 @@ class GamesVC: UIViewController {
         refreshControl.tintColor = UIColor.white
         refreshControl.attributedTitle = NSAttributedString(string: "Carregando Jogos", attributes: myAttribute)
     }
-
+    
     
     //MARK: Load Custom Navigation Options
     func loadNavigation(){
@@ -81,10 +81,10 @@ class GamesVC: UIViewController {
             if Success {
                 OperationQueue.main.addOperation {
                     if self.dataService.games.count > 0 {
-                    self.gamesTV.setState(.dataAvailable)
-                    self.gamesTV.reloadData()
-                    self.refreshControl.endRefreshing()
-                    self.activityIndicatorView.stopAnimating()
+                        self.gamesTV.setState(.dataAvailable)
+                        self.gamesTV.reloadData()
+                        self.refreshControl.endRefreshing()
+                        self.activityIndicatorView.stopAnimating()
                     } else {
                         self.gamesTV.setState(.withButton(errorImage: "error.png", title: "Vazio!", message: "Não foi encontrado nenhum jogo", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
                             self.refreshControl.endRefreshing()
@@ -122,7 +122,7 @@ class GamesVC: UIViewController {
         myFilter.saveButton.addTarget(self, action: #selector(updateFilter(_:)), for: .touchUpInside)
         myFilter.sharedTextButton.addTarget(self, action: #selector(shareTextAction(_:)), for: .touchUpInside)
         myFilter.sharedJsonButton.addTarget(self, action: #selector(shareJSONAction(_:)), for: .touchUpInside)
-            self.view.addSubview(self.myFilter)
+        self.view.addSubview(self.myFilter)
         SELECTABLE = false
     }
     
@@ -150,7 +150,7 @@ class GamesVC: UIViewController {
     
     //MARK: - Pull to Refresh
     @objc func refreshGameData(_ sender: Any){
-       loadTwitchTops()
+        loadTwitchTops()
     }
 }
 
@@ -182,7 +182,7 @@ extension GamesVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if SELECTABLE {
-        performSegue(withIdentifier: "detailLoadSegue", sender: dataService.games[indexPath.row])
+            performSegue(withIdentifier: "detailLoadSegue", sender: dataService.games[indexPath.row])
         }
     }
     
