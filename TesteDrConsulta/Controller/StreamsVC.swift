@@ -26,23 +26,7 @@ class StreamsVC: UIViewController {
         if let index = self.streamTV.indexPathForSelectedRow {
             self.streamTV.deselectRow(at: index, animated: true)
         }
-        
-        guard var game = gameName else {
-            return
-        }
-        
-        game = game.replacingOccurrences(of: " ", with: "%20")
-        
-        dataService.getTwitchStreamers(game: game) { (Success) in
-            if Success {
-                OperationQueue.main.addOperation {
-                    self.streamTV.reloadData()
-                }
-            } else {
-                
-            }
-        }
-
+        self.loadStreamers()
     }
     
     override func viewDidLoad() {
@@ -62,7 +46,8 @@ class StreamsVC: UIViewController {
         
     }
     
-    @objc func refreshStreamerData(_ sender: Any){
+    func loadStreamers() {
+        self.streamTV.setState(.loading(message: "Carregando Streamers"))
         guard var game = gameName else {
             return
         }
@@ -70,25 +55,45 @@ class StreamsVC: UIViewController {
         dataService.getTwitchStreamers(game: game) { (Success) in
             if Success {
                 OperationQueue.main.addOperation {
-                    self.streamTV.reloadData()
-                    self.refreshControl.endRefreshing()
-                    self.activityIndicator.stopAnimating()
+                    if self.dataService.streamers.count > 0 {
+                        self.streamTV.setState(.dataAvailable)
+                        self.streamTV.reloadData()
+                        self.refreshControl.endRefreshing()
+                        self.activityIndicator.stopAnimating()
+                    } else {
+                        self.streamTV.setState(.withButton(errorImage: "error.png", title: "Vazio!", message: "Não foi encontrado nenhum Streamer", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
+                            
+                        }, retryAction: {
+                            self.loadStreamers()
+                        }))
+                    }
                 }
             } else {
-                
+                OperationQueue.main.addOperation {
+                    self.streamTV.setState(.withButton(errorImage: "error.png", title: "Oh não!", message: "Houve um erro inesperado. Tente novamente mais tarde.", buttonTitle: "Tentar Novamente", buttonConfig: { (button) in
+                        
+                    }, retryAction: {
+                        self.loadStreamers()
+                    }))
+                }
             }
         }
     }
     
     
-    
-    
-    
+    @objc func refreshStreamerData(_ sender: Any){
+        loadStreamers()
+    }
 }
 
 
 extension StreamsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if dataService.streamers.count == 0 {
+            self.streamTV.separatorStyle = .none
+        } else {
+            self.streamTV.separatorStyle = .singleLine
+        }
         return dataService.streamers.count
     }
     
