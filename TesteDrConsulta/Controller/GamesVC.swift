@@ -122,7 +122,14 @@ class GamesVC: UIViewController {
         myFilter.saveButton.addTarget(self, action: #selector(updateFilter(_:)), for: .touchUpInside)
         myFilter.sharedTextButton.addTarget(self, action: #selector(shareTextAction(_:)), for: .touchUpInside)
         myFilter.sharedJsonButton.addTarget(self, action: #selector(shareJSONAction(_:)), for: .touchUpInside)
-        self.view.addSubview(self.myFilter)
+        self.view.addSubview(myFilter)
+        myFilter.translatesAutoresizingMaskIntoConstraints = false
+        let centerHorizontally = NSLayoutConstraint(item: myFilter, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        let centerVertically = NSLayoutConstraint(item: myFilter, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint.activate([centerVertically, centerHorizontally])
+        NSLayoutConstraint(item: myFilter, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 300).isActive = true
+        NSLayoutConstraint(item: myFilter, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 310).isActive = true
+
         SELECTABLE = false
     }
     
