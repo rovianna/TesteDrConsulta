@@ -135,8 +135,17 @@ class GamesVC: UIViewController {
     
     //MARK: Share Methods
     //MARK: - Share Text
+    func modelToText(games: [Game]) -> [String] {
+        var game_: [String] = []
+        for game in games {
+            var gamesString: String = ""
+            gamesString += "Jogo: \(game.name), Posição: \(game.position), Espectadores: \(game.viewers). \n"
+            game_.append(gamesString)
+        }
+        return game_
+    }
     @objc func shareTextAction(_ sender: UIButton){
-        let shareText = dataService.games
+        let shareText = modelToText(games: dataService.games)
         let activityViewController = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)

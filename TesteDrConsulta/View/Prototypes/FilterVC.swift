@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ View para Filtro
+ */
+
 class FilterVC: UIView {
     
     //MARK: Outlets
