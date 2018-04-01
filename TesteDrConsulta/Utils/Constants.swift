@@ -25,5 +25,8 @@ var LIMIT_DEFAULT = "25"
 var ORDER_BY = "POPULARIDADE"
 var SELECTABLE: Bool = true
 
+//MARK: JSON
+var gamesJSON : Data?
+
 //MARK: Background Colors
 let twitch_purple = UIColor(red: 97/255, green: 63/255, blue: 161/255, alpha: 1.0)

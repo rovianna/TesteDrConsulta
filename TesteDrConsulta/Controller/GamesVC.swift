@@ -150,6 +150,19 @@ class GamesVC: UIViewController {
         return gamesString
     }
     
+    func shareJSON(){
+        let filename = "games.json"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename)
+        do {
+            try gamesJSON?.write(to: path!)
+            let vc = UIActivityViewController(activityItems: [path!], applicationActivities: [])
+            present(vc, animated: true, completion: nil)
+            
+        } catch {
+            print("ERROR")
+        }
+    }
+    
     @objc func shareTextAction(_ sender: UIButton){
         let shareText = modelToText(games: dataService.games)
         let activityViewController = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
@@ -159,7 +172,7 @@ class GamesVC: UIViewController {
     
     //MARK: - Share JSON
     @objc func shareJSONAction(_ sender: UIButton){
-        print("OK Share JSON")
+        shareJSON()
     }
     
     //MARK: - Update Filter

@@ -34,6 +34,7 @@ class DataService {
             if error == nil {
                 _ = (response as! HTTPURLResponse).statusCode
                 if let data = data {
+                    gamesJSON = data
                     self.games = Game.parseGameJSONData(data: data)
                     //Função para ORDER_BY
                     self.games = Game.sortGameArrayData(game: self.games, order_by: ORDER_BY)
