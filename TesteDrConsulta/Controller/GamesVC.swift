@@ -145,11 +145,13 @@ class GamesVC: UIViewController {
         return game_
     }
     
+    //MARK: Share Single Row
     func shareSingleModel(game: Game) -> String {
         let gamesString = "Jogo: \(game.name), Posição: \(game.position), Espectadores: \(game.viewers). \n"
         return gamesString
     }
     
+    //MARK: Share JSON Archive
     func shareJSON(){
         let filename = "games.json"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename)
@@ -158,8 +160,11 @@ class GamesVC: UIViewController {
             let vc = UIActivityViewController(activityItems: [path!], applicationActivities: [])
             present(vc, animated: true, completion: nil)
             
-        } catch {
-            print("ERROR")
+        } catch let err {
+            let alerta = UIAlertController(title: "Erro", message: "\(err)", preferredStyle: .alert)
+            let alertaAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alerta.addAction(alertaAction)
+            present(alerta, animated: true, completion: nil)
         }
     }
     
