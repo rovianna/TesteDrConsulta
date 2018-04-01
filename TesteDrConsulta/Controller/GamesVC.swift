@@ -144,6 +144,12 @@ class GamesVC: UIViewController {
         }
         return game_
     }
+    
+    func shareSingleModel(game: Game) -> String {
+        let gamesString = "Jogo: \(game.name), Posição: \(game.position), Espectadores: \(game.viewers). \n"
+        return gamesString
+    }
+    
     @objc func shareTextAction(_ sender: UIButton){
         let shareText = modelToText(games: dataService.games)
         let activityViewController = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
@@ -172,6 +178,23 @@ class GamesVC: UIViewController {
 
 //MARK: Table View Extension
 extension GamesVC : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let share = UITableViewRowAction(style: .normal, title: "Compartilhar") { (action, indexPath) in
+            let shareText = self.shareSingleModel(game: self.dataService.games[indexPath.row])
+            let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        }
+        share.backgroundColor = UIColor.blue
+        
+        return [share]
+    }
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataService.games.count > 0 {
             self.gamesTV.separatorStyle = .singleLine
